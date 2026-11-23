@@ -78,6 +78,7 @@
       cursor: pointer;
       transition: all 0.15s ease;
       text-align: center;
+      -webkit-tap-highlight-color: transparent;
     }
 
     .tab-btn.active-toyota {
@@ -172,6 +173,7 @@
       align-items: center;
       border-bottom: 1px solid var(--border);
       padding-bottom: 8px;
+      gap: 8px;
     }
 
     .badge {
@@ -181,6 +183,7 @@
       border-radius: 999px;
       background: var(--green-bg);
       color: var(--green);
+      white-space: nowrap;
     }
 
     .check-item {
@@ -198,8 +201,8 @@
     }
 
     .check-item input[type="checkbox"] {
-      width: 19px;
-      height: 19px;
+      width: 20px;
+      height: 20px;
       margin-top: 2px;
       accent-color: var(--green);
       flex-shrink: 0;
@@ -260,7 +263,7 @@
 
     .btn-secondary {
       flex: 1;
-      padding: 10px;
+      padding: 11px;
       border-radius: 10px;
       border: 1px solid var(--border);
       background: var(--card);
@@ -350,4 +353,3 @@
           <span class="badge">Target: ₱347,585</span>
         </div>
         <label class="check-item"><input type="checkbox" data-id="t7"><div class="check-text"><strong>Jan–Dec 2028: Auto-save ₱12,849/mo</strong> (₱6,425 per payday)<span class="check-sub">Keep living expenses steady at ₱4,750/mo; pass ₱300,000 in Sep 2028.</span></div></label>
-        <label class="check-item"><input type="checkbox" data-id="t8"><div class="check-text"><strong>Open BPI #SaveUp / Saver-Plus & park ₱100,000+</strong><span class="check-sub">Qualifies you for NEXT by BPI Preferred (0.15% loan rate discount + priority service).</span></div></label>
