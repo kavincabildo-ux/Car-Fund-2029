@@ -72,6 +72,7 @@
       border: 2px solid var(--border);
       border-radius: 12px;
       background: var(--card);
+      color: var(--text);
       font-weight: 700;
       font-size: 0.92rem;
       cursor: pointer;
@@ -270,7 +271,7 @@
     }
 
     .hidden {
-      display: none;
+      display: none !important;
     }
 
     @media print {
@@ -288,18 +289,18 @@
     </header>
 
     <div class="tabs">
-      <button id="btn-toyota" class="tab-btn active-toyota" onclick="switchPlan('toyota')">
+      <button type="button" id="btn-toyota" class="tab-btn active-toyota">
         Plan A: Toyota Ativ 1.5 HEV
       </button>
-      <button id="btn-honda" class="tab-btn" onclick="switchPlan('honda')">
+      <button type="button" id="btn-honda" class="tab-btn">
         Plan B: Honda City 1.5 RS
       </button>
     </div>
 
     <div class="progress-card">
       <div class="progress-top">
-        <span id="progress-label">Checklist Progress</span>
-        <span id="progress-count">0 / 16 Completed (0%)</span>
+        <span id="progress-label">Toyota Ativ HEV Progress</span>
+        <span id="progress-count">0 / 14 Completed (0%)</span>
       </div>
       <div class="bar-bg">
         <div id="bar-fill" class="bar-fill"></div>
