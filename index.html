@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>₱430K Car Fund & BPI Action Checklist (2026–2029)</title>
+  <title>₱430K Car Fund & Monthly Tracker (2026–2029)</title>
   <style>
     :root {
       --bg: #f4f6f9;
@@ -15,6 +15,8 @@
       --toyota-bg: #fef2f2;
       --honda: #0f4c81;
       --honda-bg: #eff6ff;
+      --tracker: #059669;
+      --tracker-bg: #ecfdf5;
       --green: #059669;
       --green-bg: #ecfdf5;
     }
@@ -40,26 +42,26 @@
 
     header {
       text-align: center;
-      margin-bottom: 18px;
+      margin-bottom: 16px;
     }
 
     header h1 {
-      font-size: 1.45rem;
+      font-size: 1.4rem;
       font-weight: 800;
       letter-spacing: -0.02em;
       margin-bottom: 4px;
     }
 
     header p {
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       color: var(--muted);
     }
 
     .tabs {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-      margin-bottom: 16px;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin-bottom: 14px;
       position: sticky;
       top: 8px;
       z-index: 10;
@@ -68,15 +70,14 @@
     }
 
     .tab-btn {
-      padding: 12px 10px;
+      padding: 10px 6px;
       border: 2px solid var(--border);
       border-radius: 12px;
       background: var(--card);
       color: var(--text);
       font-weight: 700;
-      font-size: 0.92rem;
+      font-size: 0.82rem;
       cursor: pointer;
-      transition: all 0.15s ease;
       text-align: center;
       -webkit-tap-highlight-color: transparent;
     }
@@ -93,12 +94,18 @@
       color: var(--honda);
     }
 
+    .tab-btn.active-tracker {
+      border-color: var(--tracker);
+      background: var(--tracker-bg);
+      color: var(--tracker);
+    }
+
     .progress-card {
       background: var(--card);
       border: 1px solid var(--border);
       border-radius: 14px;
       padding: 14px 16px;
-      margin-bottom: 16px;
+      margin-bottom: 14px;
       box-shadow: 0 1px 3px rgba(0,0,0,0.04);
     }
 
@@ -106,7 +113,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      font-size: 0.88rem;
+      font-size: 0.86rem;
       font-weight: 700;
       margin-bottom: 8px;
     }
@@ -130,7 +137,7 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 8px;
-      margin-bottom: 16px;
+      margin-bottom: 14px;
     }
 
     .stat-box {
@@ -142,15 +149,14 @@
     }
 
     .stat-box .label {
-      font-size: 0.72rem;
+      font-size: 0.7rem;
       color: var(--muted);
       text-transform: uppercase;
       font-weight: 700;
-      letter-spacing: 0.03em;
     }
 
     .stat-box .val {
-      font-size: 1.02rem;
+      font-size: 1rem;
       font-weight: 800;
       margin-top: 2px;
     }
@@ -165,7 +171,7 @@
     }
 
     .phase-title {
-      font-size: 1rem;
+      font-size: 0.98rem;
       font-weight: 800;
       margin-bottom: 10px;
       display: flex;
@@ -200,7 +206,7 @@
       padding-bottom: 2px;
     }
 
-    .check-item input[type="checkbox"] {
+    input[type="checkbox"] {
       width: 20px;
       height: 20px;
       margin-top: 2px;
@@ -210,17 +216,13 @@
     }
 
     .check-text {
-      font-size: 0.92rem;
+      font-size: 0.91rem;
       color: var(--text);
-    }
-
-    .check-text strong {
-      font-weight: 700;
     }
 
     .check-sub {
       display: block;
-      font-size: 0.8rem;
+      font-size: 0.79rem;
       color: var(--muted);
       margin-top: 2px;
     }
@@ -230,11 +232,11 @@
       color: var(--muted);
     }
 
-    .budget-table {
+    .budget-table, .tracker-table {
       width: 100%;
       border-collapse: collapse;
-      font-size: 0.86rem;
-      margin-top: 6px;
+      font-size: 0.85rem;
+      margin-top: 4px;
     }
 
     .budget-table td {
@@ -252,6 +254,48 @@
       font-weight: 800;
       border-bottom: none;
       padding-top: 10px;
+    }
+
+    .tracker-table th {
+      text-align: left;
+      font-size: 0.74rem;
+      text-transform: uppercase;
+      color: var(--muted);
+      padding: 6px 4px;
+      border-bottom: 2px solid var(--border);
+    }
+
+    .tracker-table th:nth-child(3),
+    .tracker-table th:nth-child(4),
+    .tracker-table td:nth-child(3),
+    .tracker-table td:nth-child(4) {
+      text-align: right;
+    }
+
+    .tracker-table td {
+      padding: 8px 4px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: middle;
+    }
+
+    .tracker-table tr.done td {
+      background: #f8fafc;
+      color: var(--muted);
+    }
+
+    .tracker-table tr.done strong {
+      text-decoration: line-through;
+    }
+
+    .row-note {
+      display: block;
+      font-size: 0.74rem;
+      color: var(--muted);
+    }
+
+    .bal-cell {
+      font-weight: 800;
+      color: var(--green);
     }
 
     .footer-actions {
@@ -288,16 +332,13 @@
   <div class="container">
     <header>
       <h1>₱430,000 Car Downpayment Roadmap</h1>
-      <p>Nov 2026 – Mid-2029 Action Checklist • ₱30,600/mo Net Salary</p>
+      <p>Nov 2026 – Mid-2029 Action Checklist & Monthly Deposit Tracker</p>
     </header>
 
     <nav class="tabs">
-      <button type="button" id="btn-toyota" class="tab-btn active-toyota">
-        Plan A: Toyota Ativ 1.5 HEV
-      </button>
-      <button type="button" id="btn-honda" class="tab-btn">
-        Plan B: Honda City 1.5 RS
-      </button>
+      <button type="button" id="btn-toyota" class="tab-btn active-toyota">Plan A: Ativ HEV</button>
+      <button type="button" id="btn-honda" class="tab-btn">Plan B: City RS</button>
+      <button type="button" id="btn-tracker" class="tab-btn">Monthly Tracker</button>
     </nav>
 
     <div class="progress-card">
@@ -313,43 +354,434 @@
     <!-- PLAN A: TOYOTA ATIV 1.5 HEV CVT -->
     <main id="plan-toyota">
       <div class="summary-grid">
-        <div class="stat-box">
-          <div class="label">DP Goal</div>
-          <div class="val">₱430,000</div>
-        </div>
-        <div class="stat-box">
-          <div class="label">Target Date</div>
-          <div class="val">Jun 2029</div>
-        </div>
-        <div class="stat-box">
-          <div class="label">2029 Free Cash</div>
-          <div class="val" style="color: var(--green);">₱5,617/mo</div>
-        </div>
+        <div class="stat-box"><div class="label">DP Goal</div><div class="val">₱430,000</div></div>
+        <div class="stat-box"><div class="label">Target Date</div><div class="val">Jun 2029</div></div>
+        <div class="stat-box"><div class="label">2029 Free Cash</div><div class="val" style="color: var(--green);">₱5,617/mo</div></div>
       </div>
 
       <section class="phase-card">
-        <div class="phase-title">
-          <span>Phase 1: Nov – Dec 2026 (Launch Base)</span>
-          <span class="badge">Target: ₱65,000</span>
-        </div>
+        <div class="phase-title"><span>Phase 1: Nov – Dec 2026 (Launch Base)</span><span class="badge">Target: ₱65,000</span></div>
         <label class="check-item"><input type="checkbox" data-id="t1"><span class="check-text"><strong>Pay ₱5,500 unpaid loan</strong> using incoming ₱8,500 Nov salary<span class="check-sub">Live off remaining ₱3,000 for late Nov; keep existing ₱20,000 untouched.</span></span></label>
         <label class="check-item"><input type="checkbox" data-id="t2"><span class="check-text"><strong>Transfer ₱45,000 from ₱55,000 Dec bonuses</strong> (CNA+SRI+PEI)<span class="check-sub">Brings Jan 1, 2027 starting balance to ₱65,000. Keep ₱10,000 for holidays.</span></span></label>
         <label class="check-item"><input type="checkbox" data-id="t3"><span class="check-text"><strong>Verify ₱980 loan ends Dec 2026</strong><span class="check-sub">Confirm payroll deduction stops so Jan 2027 bills drop to ₱17,870.</span></span></label>
       </section>
 
       <section class="phase-card">
-        <div class="phase-title">
-          <span>Phase 2: 2027 Step-Up Savings</span>
-          <span class="badge">Target: ₱183,080</span>
-        </div>
+        <div class="phase-title"><span>Phase 2: 2027 Step-Up Savings</span><span class="badge">Target: ₱183,080</span></div>
         <label class="check-item"><input type="checkbox" data-id="t4"><span class="check-text"><strong>Jan 2027: Auto-save ₱7,980</strong> (₱3,990 per payday)<span class="check-sub">Cap daily food/fare/personal expenses at ₱4,750/month (~₱158/day).</span></span></label>
         <label class="check-item"><input type="checkbox" data-id="t5"><span class="check-text"><strong>Feb–Dec 2027: Step up savings to ₱9,580/mo</strong><span class="check-sub">₱1,600 loan ends in Jan 2027—roll 100% into your digital bank stash.</span></span></label>
         <label class="check-item"><input type="checkbox" data-id="t6"><span class="check-text"><strong>Verify ₱3,269 loan ends Dec 2027</strong><span class="check-sub">Fixed bills drop to ₱13,001/month starting Jan 2028.</span></span></label>
       </section>
 
       <section class="phase-card">
-        <div class="phase-title">
-          <span>Phase 3: 2028 Full Acceleration & BPI Setup</span>
-          <span class="badge">Target: ₱347,585</span>
-        </div>
+        <div class="phase-title"><span>Phase 3: 2028 Full Acceleration & BPI Setup</span><span class="badge">Target: ₱347,585</span></div>
         <label class="check-item"><input type="checkbox" data-id="t7"><span class="check-text"><strong>Jan–Dec 2028: Auto-save ₱12,849/mo</strong> (₱6,425 per payday)<span class="check-sub">Keep living expenses steady at ₱4,750/mo; pass ₱300,000 in Sep 2028.</span></span></label>
+        <label class="check-item"><input type="checkbox" data-id="t8"><span class="check-text"><strong>Open BPI #SaveUp / Saver-Plus & park ₱100,000+</strong><span class="check-sub">Qualifies you for NEXT by BPI Preferred (0.15% loan rate discount + priority service).</span></span></label>
+        <label class="check-item"><input type="checkbox" data-id="t9"><span class="check-text"><strong>Coordinate with Mother's BPI Preferred RM</strong><span class="check-sub">Confirm co-borrower setup & ask about Toyota BPI partner free multi-year insurance promos.</span></span></label>
+      </section>
+
+      <section class="phase-card">
+        <div class="phase-title"><span>Phase 4: Jan – Mid-2029 Purchase Execution</span><span class="badge">Target: ₱432,334</span></div>
+        <label class="check-item"><input type="checkbox" data-id="t10"><span class="check-text"><strong>Jan–Jun 2029: Save ₱12,849/mo</strong> until crossing ₱430,000<span class="check-sub">Keep 2027–2028 government bonuses as your separate ₱50K+ emergency & fee buffer.</span></span></label>
+        <label class="check-item"><input type="checkbox" data-id="t11"><span class="check-text"><strong>Confirm final deduction of 2 loans totaling ₱5,000/mo</strong><span class="check-sub">Fixed bills drop to ₱8,001/mo; wait for clearance before releasing Bank PO.</span></span></label>
+        <label class="check-item"><input type="checkbox" data-id="t12"><span class="check-text"><strong>Shop for ₱150,000+ clearance discount on Ativ 1.5 HEV</strong><span class="check-sub">Request Bank PO cash price quotes (never accept high-APR in-house financing).</span></span></label>
+        <label class="check-item"><input type="checkbox" data-id="t13"><span class="check-text"><strong>Lock BPI Preferred Bank PO (60 mos, ~₱618K financed)</strong><span class="check-sub">Target waived chattel mortgage fees + free Year 1 (or 5-yr promo) insurance.</span></span></label>
+        <label class="check-item"><input type="checkbox" data-id="t14"><span class="check-text"><strong>Start auto-transferring ₱2,726/mo to Car Sinking Fund</strong><span class="check-sub">Covers 6-month casa PMS, Years 2–5 insurance, and Year 4–5 EVIDA LTO renewal.</span></span></label>
+      </section>
+
+      <section class="phase-card">
+        <div class="phase-title"><span>Mid-2029 Monthly Payslip Blueprint (₱30,600)</span></div>
+        <table class="budget-table">
+          <tr><td>Remaining Fixed Bills (All 5 loans cleared)</td><td>₱8,001</td></tr>
+          <tr><td>BPI Auto Loan Amortization (60 mos)</td><td>₱13,131</td></tr>
+          <tr><td>Monthly Gas (450 km/mo @ ~24 km/L)</td><td>₱1,125</td></tr>
+          <tr><td>Car Sinking Fund (PMS + Insurance + LTO)</td><td>₱2,726</td></tr>
+          <tr class="highlight"><td>Leftover for Food & Personal (~₱187/day)</td><td>₱5,617 / mo</td></tr>
+        </table>
+      </section>
+    </main>
+
+    <!-- PLAN B: HONDA CITY 1.5 RS CVT -->
+    <main id="plan-honda" class="hidden">
+      <div class="summary-grid">
+        <div class="stat-box"><div class="label">DP Goal</div><div class="val">₱430,000</div></div>
+        <div class="stat-box"><div class="label">Target Date</div><div class="val">Jun 2029</div></div>
+        <div class="stat-box"><div class="label">2029 Free Cash</div><div class="val" style="color: var(--green);">₱4,556/mo</div></div>
+      </div>
+
+      <section class="phase-card">
+        <div class="phase-title"><span>Phase 1: Nov – Dec 2026 (Launch Base)</span><span class="badge">Target: ₱65,000</span></div>
+        <label class="check-item"><input type="checkbox" data-id="h1"><span class="check-text"><strong>Pay ₱5,500 unpaid loan</strong> using incoming ₱8,500 Nov salary<span class="check-sub">Live off remaining ₱3,000 for late Nov; keep existing ₱20,000 untouched.</span></span></label>
+        <label class="check-item"><input type="checkbox" data-id="h2"><span class="check-text"><strong>Transfer ₱45,000 from ₱55,000 Dec bonuses</strong> (CNA+SRI+PEI)<span class="check-sub">Brings Jan 1, 2027 starting balance to ₱65,000. Keep ₱10,000 for holidays.</span></span></label>
+        <label class="check-item"><input type="checkbox" data-id="h3"><span class="check-text"><strong>Verify ₱980 loan ends Dec 2026</strong><span class="check-sub">Confirm payroll deduction stops so Jan 2027 bills drop to ₱17,870.</span></span></label>
+      </section>
+
+      <section class="phase-card">
+        <div class="phase-title"><span>Phase 2: 2027 Step-Up Savings</span><span class="badge">Target: ₱183,080</span></div>
+        <label class="check-item"><input type="checkbox" data-id="h4"><span class="check-text"><strong>Jan 2027: Auto-save ₱7,980</strong> (₱3,990 per payday)<span class="check-sub">Cap daily food/fare/personal expenses at ₱4,750/month (~₱158/day).</span></span></label>
+        <label class="check-item"><input type="checkbox" data-id="h5"><span class="check-text"><strong>Feb–Dec 2027: Step up savings to ₱9,580/mo</strong><span class="check-sub">₱1,600 loan ends in Jan 2027—roll 100% into your digital bank stash.</span></span></label>
+        <label class="check-item"><input type="checkbox" data-id="h6"><span class="check-text"><strong>Verify ₱3,269 loan ends Dec 2027</strong><span class="check-sub">Fixed bills drop to ₱13,001/month starting Jan 2028.</span></span></label>
+      </section>
+
+      <section class="phase-card">
+        <div class="phase-title"><span>Phase 3: 2028 Full Acceleration & BPI Setup</span><span class="badge">Target: ₱347,585</span></div>
+        <label class="check-item"><input type="checkbox" data-id="h7"><span class="check-text"><strong>Jan–Dec 2028: Auto-save ₱12,849/mo</strong> (₱6,425 per payday)<span class="check-sub">Keep living expenses steady at ₱4,750/mo; pass ₱300,000 in Sep 2028.</span></span></label>
+        <label class="check-item"><input type="checkbox" data-id="h8"><span class="check-text"><strong>Open BPI #SaveUp / Saver-Plus & park ₱100,000+</strong><span class="check-sub">Qualifies you for NEXT by BPI Preferred (0.15% loan rate discount + priority service).</span></span></label>
+        <label class="check-item"><input type="checkbox" data-id="h9"><span class="check-text"><strong>Coordinate with Mother's BPI Preferred RM</strong><span class="check-sub">Confirm co-borrower setup & check if Honda is in BPI's active free insurance promo.</span></span></label>
+      </section>
+
+      <section class="phase-card">
+        <div class="phase-title"><span>Phase 4: Jan – Mid-2029 Purchase Execution</span><span class="badge">Target: ₱432,334</span></div>
+        <label class="check-item"><input type="checkbox" data-id="h10"><span class="check-text"><strong>Jan–Jun 2029: Save ₱12,849/mo</strong> until crossing ₱430,000<span class="check-sub">Keep 2027–2028 government bonuses as your separate ₱50K+ emergency & fee buffer.</span></span></label>
+        <label class="check-item"><input type="checkbox" data-id="h11"><span class="check-text"><strong>Confirm final deduction of 2 loans totaling ₱5,000/mo</strong><span class="check-sub">Fixed bills drop to ₱8,001/mo; wait for clearance before releasing Bank PO.</span></span></label>
+        <label class="check-item"><input type="checkbox" data-id="h12"><span class="check-text"><strong>Reserve outgoing City 1.5 RS with ₱130,000+ discount</strong><span class="check-sub">Inquire 2–3 months early before next-gen transition sells out top trims/colors.</span></span></label>
+        <label class="check-item"><input type="checkbox" data-id="h13"><span class="check-text"><strong>Lock BPI Preferred Bank PO (60 mos, ~₱618K financed)</strong><span class="check-sub">Request waived chattel mortgage fees + free Year 1 comprehensive insurance.</span></span></label>
+        <label class="check-item"><input type="checkbox" data-id="h14"><span class="check-text"><strong>Start auto-transferring ₱2,835/mo to Car Sinking Fund</strong><span class="check-sub">Covers 6-month casa PMS (decline optional chemical flushes), insurance & LTO.</span></span></label>
+      </section>
+
+      <section class="phase-card">
+        <div class="phase-title"><span>Mid-2029 Monthly Payslip Blueprint (₱30,600)</span></div>
+        <table class="budget-table">
+          <tr><td>Remaining Fixed Bills (All 5 loans cleared)</td><td>₱8,001</td></tr>
+          <tr><td>BPI Auto Loan Amortization (60 mos)</td><td>₱13,131</td></tr>
+          <tr><td>Monthly Gas (450 km/mo @ ~13 km/L)</td><td>₱2,077</td></tr>
+          <tr><td>Car Sinking Fund (PMS + Insurance + LTO)</td><td>₱2,835</td></tr>
+          <tr class="highlight"><td>Leftover for Food & Personal (~₱152/day)</td><td>₱4,556 / mo</td></tr>
+        </table>
+      </section>
+    </main>
+
+    <!-- TAB 3: MONTHLY DEPOSIT TRACKER -->
+    <main id="plan-tracker" class="hidden">
+      <div class="summary-grid">
+        <div class="stat-box"><div class="label">Starting Base</div><div class="val">₱65,000</div></div>
+        <div class="stat-box"><div class="label">Total Months</div><div class="val">30 Mos</div></div>
+        <div class="stat-box"><div class="label">Jun 2029 End</div><div class="val" style="color: var(--green);">₱432,334</div></div>
+      </div>
+
+      <section class="phase-card">
+        <div class="phase-title">
+          <span>Monthly Deposit Log (4% p.a. Digital Bank)</span>
+          <span class="badge">Balanced Pace</span>
+        </div>
+        <table class="tracker-table">
+          <thead>
+            <tr>
+              <th style="width:28px;">Done</th>
+              <th>Month & Milestone</th>
+              <th>Deposit</th>
+              <th>Balance</th>
+            </tr>
+          </thead>
+          <tbody>
+          <tr class="deposit-row" data-row="m0">
+            <td><input type="checkbox" data-id="m0"></td>
+            <td><strong>Dec 2026</strong><span class="row-note">Start Base (₱20K + ₱45K Bonus)</span></td>
+            <td>—</td>
+            <td class="bal-cell">₱65,000.00</td>
+          </tr>
+          <tr class="deposit-row" data-row="m1">
+            <td><input type="checkbox" data-id="m1"></td>
+            <td><strong>Jan 2027</strong><span class="row-note">₱980 loan ended</span></td>
+            <td>₱7,980</td>
+            <td class="bal-cell">₱73,196.67</td>
+          </tr>
+          <tr class="deposit-row" data-row="m2">
+            <td><input type="checkbox" data-id="m2"></td>
+            <td><strong>Feb 2027</strong><span class="row-note">₱1,600 loan ended</span></td>
+            <td>₱9,580</td>
+            <td class="bal-cell">₱83,020.66</td>
+          </tr>
+          <tr class="deposit-row" data-row="m3">
+            <td><input type="checkbox" data-id="m3"></td>
+            <td><strong>Mar 2027</strong><span class="row-note">Step-up pace</span></td>
+            <td>₱9,580</td>
+            <td class="bal-cell">₱92,877.39</td>
+          </tr>
+          <tr class="deposit-row" data-row="m4">
+            <td><input type="checkbox" data-id="m4"></td>
+            <td><strong>Apr 2027</strong><span class="row-note">Crosses ₱100K (BPI NEXT ready)</span></td>
+            <td>₱9,580</td>
+            <td class="bal-cell">₱102,766.98</td>
+          </tr>
+          <tr class="deposit-row" data-row="m5">
+            <td><input type="checkbox" data-id="m5"></td>
+            <td><strong>May 2027</strong><span class="row-note">Step-up pace</span></td>
+            <td>₱9,580</td>
+            <td class="bal-cell">₱112,689.54</td>
+          </tr>
+          <tr class="deposit-row" data-row="m6">
+            <td><input type="checkbox" data-id="m6"></td>
+            <td><strong>Jun 2027</strong><span class="row-note">Mid-year checkpoint</span></td>
+            <td>₱9,580</td>
+            <td class="bal-cell">₱122,645.17</td>
+          </tr>
+          <tr class="deposit-row" data-row="m7">
+            <td><input type="checkbox" data-id="m7"></td>
+            <td><strong>Jul 2027</strong><span class="row-note">Step-up pace</span></td>
+            <td>₱9,580</td>
+            <td class="bal-cell">₱132,633.99</td>
+          </tr>
+          <tr class="deposit-row" data-row="m8">
+            <td><input type="checkbox" data-id="m8"></td>
+            <td><strong>Aug 2027</strong><span class="row-note">Step-up pace</span></td>
+            <td>₱9,580</td>
+            <td class="bal-cell">₱142,656.10</td>
+          </tr>
+          <tr class="deposit-row" data-row="m9">
+            <td><input type="checkbox" data-id="m9"></td>
+            <td><strong>Sep 2027</strong><span class="row-note">Passes ₱150K</span></td>
+            <td>₱9,580</td>
+            <td class="bal-cell">₱152,711.62</td>
+          </tr>
+          <tr class="deposit-row" data-row="m10">
+            <td><input type="checkbox" data-id="m10"></td>
+            <td><strong>Oct 2027</strong><span class="row-note">Step-up pace</span></td>
+            <td>₱9,580</td>
+            <td class="bal-cell">₱162,800.66</td>
+          </tr>
+          <tr class="deposit-row" data-row="m11">
+            <td><input type="checkbox" data-id="m11"></td>
+            <td><strong>Nov 2027</strong><span class="row-note">Step-up pace</span></td>
+            <td>₱9,580</td>
+            <td class="bal-cell">₱172,923.33</td>
+          </tr>
+          <tr class="deposit-row" data-row="m12">
+            <td><input type="checkbox" data-id="m12"></td>
+            <td><strong>Dec 2027</strong><span class="row-note">₱3,269 loan ends this month</span></td>
+            <td>₱9,580</td>
+            <td class="bal-cell">₱183,079.74</td>
+          </tr>
+          <tr class="deposit-row" data-row="m13">
+            <td><input type="checkbox" data-id="m13"></td>
+            <td><strong>Jan 2028</strong><span class="row-note">Full acceleration starts</span></td>
+            <td>₱12,849</td>
+            <td class="bal-cell">₱196,539.01</td>
+          </tr>
+          <tr class="deposit-row" data-row="m14">
+            <td><input type="checkbox" data-id="m14"></td>
+            <td><strong>Feb 2028</strong><span class="row-note">Crosses ₱200K</span></td>
+            <td>₱12,849</td>
+            <td class="bal-cell">₱210,043.14</td>
+          </tr>
+          <tr class="deposit-row" data-row="m15">
+            <td><input type="checkbox" data-id="m15"></td>
+            <td><strong>Mar 2028</strong><span class="row-note">Full acceleration</span></td>
+            <td>₱12,849</td>
+            <td class="bal-cell">₱223,592.28</td>
+          </tr>
+          <tr class="deposit-row" data-row="m16">
+            <td><input type="checkbox" data-id="m16"></td>
+            <td><strong>Apr 2028</strong><span class="row-note">Full acceleration</span></td>
+            <td>₱12,849</td>
+            <td class="bal-cell">₱237,186.59</td>
+          </tr>
+          <tr class="deposit-row" data-row="m17">
+            <td><input type="checkbox" data-id="m17"></td>
+            <td><strong>May 2028</strong><span class="row-note">Passes ₱250K</span></td>
+            <td>₱12,849</td>
+            <td class="bal-cell">₱250,826.21</td>
+          </tr>
+          <tr class="deposit-row" data-row="m18">
+            <td><input type="checkbox" data-id="m18"></td>
+            <td><strong>Jun 2028</strong><span class="row-note">Mid-year checkpoint</span></td>
+            <td>₱12,849</td>
+            <td class="bal-cell">₱264,511.30</td>
+          </tr>
+          <tr class="deposit-row" data-row="m19">
+            <td><input type="checkbox" data-id="m19"></td>
+            <td><strong>Jul 2028</strong><span class="row-note">Full acceleration</span></td>
+            <td>₱12,849</td>
+            <td class="bal-cell">₱278,242.00</td>
+          </tr>
+          <tr class="deposit-row" data-row="m20">
+            <td><input type="checkbox" data-id="m20"></td>
+            <td><strong>Aug 2028</strong><span class="row-note">Full acceleration</span></td>
+            <td>₱12,849</td>
+            <td class="bal-cell">₱292,018.47</td>
+          </tr>
+          <tr class="deposit-row" data-row="m21">
+            <td><input type="checkbox" data-id="m21"></td>
+            <td><strong>Sep 2028</strong><span class="row-note">Crosses ₱300K milestone</span></td>
+            <td>₱12,849</td>
+            <td class="bal-cell">₱305,840.87</td>
+          </tr>
+          <tr class="deposit-row" data-row="m22">
+            <td><input type="checkbox" data-id="m22"></td>
+            <td><strong>Oct 2028</strong><span class="row-note">Full acceleration</span></td>
+            <td>₱12,849</td>
+            <td class="bal-cell">₱319,709.34</td>
+          </tr>
+          <tr class="deposit-row" data-row="m23">
+            <td><input type="checkbox" data-id="m23"></td>
+            <td><strong>Nov 2028</strong><span class="row-note">Full acceleration</span></td>
+            <td>₱12,849</td>
+            <td class="bal-cell">₱333,624.04</td>
+          </tr>
+          <tr class="deposit-row" data-row="m24">
+            <td><input type="checkbox" data-id="m24"></td>
+            <td><strong>Dec 2028</strong><span class="row-note">Year 2 complete</span></td>
+            <td>₱12,849</td>
+            <td class="bal-cell">₱347,585.12</td>
+          </tr>
+          <tr class="deposit-row" data-row="m25">
+            <td><input type="checkbox" data-id="m25"></td>
+            <td><strong>Jan 2029</strong><span class="row-note">Final stretch</span></td>
+            <td>₱12,849</td>
+            <td class="bal-cell">₱361,592.73</td>
+          </tr>
+          <tr class="deposit-row" data-row="m26">
+            <td><input type="checkbox" data-id="m26"></td>
+            <td><strong>Feb 2029</strong><span class="row-note">Final stretch</span></td>
+            <td>₱12,849</td>
+            <td class="bal-cell">₱375,647.04</td>
+          </tr>
+          <tr class="deposit-row" data-row="m27">
+            <td><input type="checkbox" data-id="m27"></td>
+            <td><strong>Mar 2029</strong><span class="row-note">Final stretch</span></td>
+            <td>₱12,849</td>
+            <td class="bal-cell">₱389,748.20</td>
+          </tr>
+          <tr class="deposit-row" data-row="m28">
+            <td><input type="checkbox" data-id="m28"></td>
+            <td><strong>Apr 2029</strong><span class="row-note">Crosses ₱400K</span></td>
+            <td>₱12,849</td>
+            <td class="bal-cell">₱403,896.36</td>
+          </tr>
+          <tr class="deposit-row" data-row="m29">
+            <td><input type="checkbox" data-id="m29"></td>
+            <td><strong>May 2029</strong><span class="row-note">Final month before goal</span></td>
+            <td>₱12,849</td>
+            <td class="bal-cell">₱418,091.68</td>
+          </tr>
+          <tr class="deposit-row" data-row="m30">
+            <td><input type="checkbox" data-id="m30"></td>
+            <td><strong>Jun 2029</strong><span class="row-note">GOAL REACHED (₱430K+)</span></td>
+            <td>₱12,849</td>
+            <td class="bal-cell">₱432,334.32</td>
+          </tr>
+          </tbody>
+        </table>
+      </section>
+    </main>
+
+    <div class="footer-actions">
+      <button type="button" id="btn-print" class="btn-secondary">Print / Save PDF</button>
+      <button type="button" id="btn-reset" class="btn-secondary">Reset Current Tab</button>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      var safeStorage = {
+        get: function (key) {
+          try { return localStorage.getItem(key); } catch (e) { return null; }
+        },
+        set: function (key, val) {
+          try { localStorage.setItem(key, val); } catch (e) {}
+        },
+        remove: function (key) {
+          try { localStorage.removeItem(key); } catch (e) {}
+        }
+      };
+
+      var currentPlan = safeStorage.get('selectedCarPlan') || 'toyota';
+      var containers = {
+        toyota: document.getElementById('plan-toyota'),
+        honda: document.getElementById('plan-honda'),
+        tracker: document.getElementById('plan-tracker')
+      };
+      var buttons = {
+        toyota: document.getElementById('btn-toyota'),
+        honda: document.getElementById('btn-honda'),
+        tracker: document.getElementById('btn-tracker')
+      };
+      var labels = {
+        toyota: 'Toyota Ativ HEV Progress',
+        honda: 'Honda City RS Progress',
+        tracker: 'Monthly Deposit Milestones'
+      };
+
+      var progressLabel = document.getElementById('progress-label');
+      var progressCount = document.getElementById('progress-count');
+      var barFill = document.getElementById('bar-fill');
+
+      function updateProgress() {
+        var container = containers[currentPlan];
+        var checkboxes = container.querySelectorAll('input[type="checkbox"]');
+        var checkedCount = 0;
+
+        for (var i = 0; i < checkboxes.length; i++) {
+          var cb = checkboxes[i];
+          var row = cb.closest('.check-item') || cb.closest('.deposit-row');
+          if (cb.checked) {
+            checkedCount++;
+            if (row) row.classList.add('done');
+          } else {
+            if (row) row.classList.remove('done');
+          }
+        }
+
+        var total = checkboxes.length;
+        var pct = total > 0 ? Math.round((checkedCount / total) * 100) : 0;
+        progressLabel.textContent = labels[currentPlan];
+        progressCount.textContent = checkedCount + ' / ' + total + ' Completed (' + pct + '%)';
+        barFill.style.width = pct + '%';
+      }
+
+      function switchPlan(plan) {
+        if (!containers[plan]) plan = 'toyota';
+        currentPlan = plan;
+        safeStorage.set('selectedCarPlan', plan);
+
+        Object.keys(containers).forEach(function (key) {
+          if (key === plan) {
+            containers[key].classList.remove('hidden');
+            buttons[key].classList.add('active-' + key);
+          } else {
+            containers[key].classList.add('hidden');
+            buttons[key].classList.remove('active-' + key);
+          }
+        });
+
+        updateProgress();
+      }
+
+      buttons.toyota.addEventListener('click', function () { switchPlan('toyota'); });
+      buttons.honda.addEventListener('click', function () { switchPlan('honda'); });
+      buttons.tracker.addEventListener('click', function () { switchPlan('tracker'); });
+
+      var allBoxes = document.querySelectorAll('input[type="checkbox"]');
+      for (var j = 0; j < allBoxes.length; j++) {
+        (function (cb) {
+          var id = cb.getAttribute('data-id');
+          if (safeStorage.get('carCheck_' + id) === 'true') {
+            cb.checked = true;
+          }
+          cb.addEventListener('change', function () {
+            safeStorage.set('carCheck_' + id, cb.checked ? 'true' : 'false');
+            updateProgress();
+          });
+        })(allBoxes[j]);
+      }
+
+      document.getElementById('btn-print').addEventListener('click', function () {
+        window.print();
+      });
+
+      document.getElementById('btn-reset').addEventListener('click', function () {
+        if (!confirm('Reset all checkboxes in the active tab?')) return;
+        var container = containers[currentPlan];
+        var boxes = container.querySelectorAll('input[type="checkbox"]');
+        for (var k = 0; k < boxes.length; k++) {
+          boxes[k].checked = false;
+          safeStorage.remove('carCheck_' + boxes[k].getAttribute('data-id'));
+        }
+        updateProgress();
+      });
+
+      switchPlan(currentPlan);
+    })();
+  </script>
+</body>
+</html>
